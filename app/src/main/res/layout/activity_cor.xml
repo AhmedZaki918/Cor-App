@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CorActivity">
+
+    <!-- Total weight -->
+    <EditText
+        android:id="@+id/total_weight"
+        style="@style/EditText"
+        android:layout_marginStart="45dp"
+        android:hint="@string/total_weight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Cor weight -->
+    <EditText
+        android:id="@+id/cor_weight"
+        style="@style/EditText"
+        android:layout_marginStart="35dp"
+        android:hint="@string/cor_weight"
+        app:layout_constraintStart_toEndOf="@+id/total_weight"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Price -->
+    <EditText
+        android:id="@+id/stretch_price"
+        style="@style/EditText"
+        android:layout_marginStart="35dp"
+        android:hint="@string/stretch_price"
+        app:layout_constraintStart_toEndOf="@+id/cor_weight"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Net weight -->
+    <Button
+        android:id="@+id/net_Button"
+        style="@style/Button"
+        android:layout_marginStart="65dp"
+        android:text="@string/net"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/total_weight" />
+
+    <!-- Total weight -->
+    <Button
+        android:id="@+id/total_Button"
+        style="@style/Button"
+        android:layout_marginStart="35dp"
+        android:text="@string/total"
+        app:layout_constraintStart_toEndOf="@+id/net_Button"
+        app:layout_constraintTop_toBottomOf="@+id/cor_weight" />
+
+    <!-- Clear weight -->
+    <Button
+        android:id="@+id/clear_Button"
+        style="@style/Button"
+        android:layout_marginStart="35dp"
+        android:text="@string/clear"
+        app:layout_constraintStart_toEndOf="@+id/total_Button"
+        app:layout_constraintTop_toBottomOf="@+id/stretch_price" />
+
+    <!-- Your cost -->
+    <TextView
+        android:id="@+id/yourCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/real_cost"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/net_Button" />
+
+    <!-- The final result -->
+    <EditText
+        android:id="@+id/real_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:ems="4"
+        android:inputType="numberDecimal"
+        android:text="@string/zero"
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/EGP"
+        app:layout_constraintStart_toEndOf="@+id/yourCost"
+        app:layout_constraintTop_toBottomOf="@+id/total_Button" />
+
+    <!-- EGP -->
+    <TextView
+        android:id="@+id/EGP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="130dp"
+        android:text="@string/egp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/real_cost"
+        app:layout_constraintTop_toBottomOf="@+id/clear_Button" />
+
+</android.support.constraint.ConstraintLayout>

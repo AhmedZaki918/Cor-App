@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- TextSize for last line in design-->
+    <dimen name="text_size">18sp</dimen>
+
+    <!-- Margin top for all EditText -->
+    <dimen name="margin_top_edit_text">28dp</dimen>
+
+    <!-- Margin top for all EditText -->
+    <dimen name="margin_top_button">24dp</dimen>
+
+</resources>
