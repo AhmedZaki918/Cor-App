@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
+// Main Activity class
 public class CorActivity extends AppCompatActivity {
 
     // Initializations for variables
