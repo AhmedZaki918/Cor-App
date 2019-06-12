@@ -16,6 +16,7 @@ import butterknife.ButterKnife;
 public class CorActivity extends AppCompatActivity {
 
     // Initializations for variables
+    private final static double COR_PRICE = 12;
     @BindView(R.id.total_weight)
     EditText totalWeight;
     @BindView(R.id.cor_weight)
@@ -24,7 +25,6 @@ public class CorActivity extends AppCompatActivity {
     EditText stretchPrice;
     @BindView(R.id.real_cost)
     TextView realCost;
-    private final static double COR_PRICE = 12;
     @BindView(R.id.net_Button)
     Button net;
     @BindView(R.id.total_Button)
@@ -33,7 +33,7 @@ public class CorActivity extends AppCompatActivity {
     Button clear;
 
     // Variable to format the result
-    private double formated;
+    private double formatted;
 
 
     @Override
@@ -92,7 +92,7 @@ public class CorActivity extends AppCompatActivity {
         fromatter(result);
 
         // Display the final cost
-        realCost.setText(formated + "");
+        realCost.setText(formatted + "");
     }
 
     // The whole operation of total price
@@ -116,7 +116,7 @@ public class CorActivity extends AppCompatActivity {
         fromatter(result);
 
         // Display the final cost
-        realCost.setText(formated + "");
+        realCost.setText(formatted + "");
     }
 
     // Clear all data in all views
@@ -130,6 +130,6 @@ public class CorActivity extends AppCompatActivity {
     // format the double number
     private void fromatter(double num) {
         DecimalFormat dFormatter = new DecimalFormat("#.##");
-        formated = Double.parseDouble(dFormatter.format(num));
+        formatted = Double.parseDouble(dFormatter.format(num));
     }
 }
