@@ -17,19 +17,19 @@ public class CorActivity extends AppCompatActivity {
 
     // Initializations for variables
     private final static double COR_PRICE = 12;
-    @BindView(R.id.total_weight)
+    @BindView(R.id.edit_text_totalWeight)
     EditText totalWeight;
-    @BindView(R.id.cor_weight)
+    @BindView(R.id.edit_text_corWeight)
     EditText corWeight;
-    @BindView(R.id.stretch_price)
+    @BindView(R.id.edit_text_stretchPrice)
     EditText stretchPrice;
-    @BindView(R.id.real_cost)
+    @BindView(R.id.text_view_result)
     TextView realCost;
-    @BindView(R.id.net_Button)
+    @BindView(R.id.button_net)
     Button net;
-    @BindView(R.id.total_Button)
+    @BindView(R.id.button_total)
     Button total;
-    @BindView(R.id.clear_Button)
+    @BindView(R.id.button_clear)
     Button clear;
 
     // Variable to format the result
@@ -65,12 +65,10 @@ public class CorActivity extends AppCompatActivity {
                 clearAll();
             }
         });
-
     }
 
     // The whole operation of net price
     private void calcNet() {
-
         // Get data form all EditText and convert it to double
         double getValueCorWeight = Double.parseDouble(corWeight.getText().toString());
         double getValueTotalWeight = Double.parseDouble(totalWeight.getText().toString());
@@ -89,7 +87,7 @@ public class CorActivity extends AppCompatActivity {
         double result = cost / netWeight;
 
         // format the double to 2 digit
-        fromatter(result);
+        formatter(result);
 
         // Display the final cost
         realCost.setText(formatted + "");
@@ -97,7 +95,6 @@ public class CorActivity extends AppCompatActivity {
 
     // The whole operation of total price
     private void calcTotal() {
-
         // Get data form all EditText and convert it to double
         double getValueCorWeight = Double.parseDouble(corWeight.getText().toString());
         double getValueTotalWeight = Double.parseDouble(totalWeight.getText().toString());
@@ -113,7 +110,7 @@ public class CorActivity extends AppCompatActivity {
         double result = cost / getValueTotalWeight;
 
         // format the double to 2 digit
-        fromatter(result);
+        formatter(result);
 
         // Display the final cost
         realCost.setText(formatted + "");
@@ -128,7 +125,7 @@ public class CorActivity extends AppCompatActivity {
     }
 
     // format the double number
-    private void fromatter(double num) {
+    private void formatter(double num) {
         DecimalFormat dFormatter = new DecimalFormat("#.##");
         formatted = Double.parseDouble(dFormatter.format(num));
     }

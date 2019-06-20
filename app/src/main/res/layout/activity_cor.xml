@@ -6,103 +6,188 @@
     android:layout_height="match_parent"
     tools:context=".CorActivity">
 
-    <!-- Total weight -->
-    <EditText
-        android:id="@+id/total_weight"
-        style="@style/EditText"
-        android:layout_marginStart="16dp"
-        android:hint="@string/total_weight"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Cor weight -->
-    <EditText
-        android:id="@+id/cor_weight"
-        style="@style/EditText"
-        android:layout_marginStart="35dp"
-        android:hint="@string/cor_weight"
-        app:layout_constraintStart_toEndOf="@+id/total_weight"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Price -->
-    <EditText
-        android:id="@+id/stretch_price"
-        style="@style/EditText"
-        android:layout_marginStart="35dp"
-        android:hint="@string/stretch_price"
-        app:layout_constraintStart_toEndOf="@+id/cor_weight"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Net weight -->
-    <Button
-        android:id="@+id/net_Button"
-        style="@style/Button"
-        android:layout_marginStart="40dp"
-        android:text="@string/net"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/total_weight" />
-
-    <!-- Total weight -->
-    <Button
-        android:id="@+id/total_Button"
-        style="@style/Button"
-        android:layout_marginStart="35dp"
-        android:text="@string/total"
-        app:layout_constraintStart_toEndOf="@+id/net_Button"
-        app:layout_constraintTop_toBottomOf="@+id/cor_weight" />
-
-    <!-- Clear weight -->
-    <Button
-        android:id="@+id/clear_Button"
-        style="@style/Button"
-        android:layout_marginStart="35dp"
-        android:text="@string/clear"
-        app:layout_constraintStart_toEndOf="@+id/total_Button"
-        app:layout_constraintTop_toBottomOf="@+id/stretch_price" />
-
-    <!-- Your cost -->
     <TextView
-        android:id="@+id/yourCost"
+        android:id="@+id/text_view_totalWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/real_cost"
-        android:textSize="@dimen/text_size"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginEnd="304dp"
+        android:text="@string/total_weight"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/net_Button" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- The final result -->
     <EditText
-        android:id="@+id/real_cost"
+        android:id="@+id/edit_text_totalWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:ems="4"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="150dp"
+        android:ems="5"
+        android:gravity="center_horizontal"
         android:inputType="numberDecimal"
-        android:text="@string/zero"
-        android:textAlignment="center"
-        android:textColor="@color/red"
-        android:textSize="@dimen/text_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/EGP"
-        app:layout_constraintStart_toEndOf="@+id/yourCost"
-        app:layout_constraintTop_toBottomOf="@+id/total_Button" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_totalWeight"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- EGP -->
     <TextView
-        android:id="@+id/EGP"
+        android:id="@+id/text_view_corWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="304dp"
+        android:text="@string/cor_weight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_totalWeight" />
+
+    <TextView
+        android:id="@+id/text_view_kg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="140dp"
+        android:text="@string/kg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edit_text_totalWeight"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_text_corWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="140dp"
+        android:ems="5"
+        android:gravity="center_horizontal"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_corWeight"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_totalWeight" />
+
+    <TextView
+        android:id="@+id/text_view_kg1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="140dp"
+        android:text="@string/kg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edit_text_corWeight"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_kg" />
+
+    <TextView
+        android:id="@+id/text_view_stretchPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="309dp"
+        android:text="@string/stretch_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_corWeight" />
+
+    <EditText
+        android:id="@+id/edit_text_stretchPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="150dp"
+        android:ems="5"
+        android:gravity="center_horizontal"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_stretchPrice"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_corWeight" />
+
+    <TextView
+        android:id="@+id/text_view_currency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="130dp"
+        android:text="@string/egp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edit_text_stretchPrice"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_kg1" />
+
+    <Button
+        android:id="@+id/button_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="253dp"
+        android:text="@string/total"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_stretchPrice" />
+
+    <Button
+        android:id="@+id/button_net"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="150dp"
+        android:text="@string/net"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_total"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_stretchPrice" />
+
+    <Button
+        android:id="@+id/button_clear"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="110dp"
+        android:text="@string/clear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_net"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_stretchPrice" />
+
+    <TextView
+        android:id="@+id/text_view_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="317dp"
+        android:text="@string/real_cost"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_total" />
+
+
+    <TextView
+        android:id="@+id/text_view_currency1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="130dp"
         android:text="@string/egp"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/real_cost"
-        app:layout_constraintTop_toBottomOf="@+id/clear_Button" />
+        app:layout_constraintStart_toEndOf="@+id/text_view_cost"
+        app:layout_constraintTop_toBottomOf="@+id/button_clear" />
 
+    <TextView
+        android:id="@+id/text_view_result"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center_horizontal"
+        android:text="@string/zero"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_currency1"
+        app:layout_constraintStart_toEndOf="@+id/text_view_cost"
+        app:layout_constraintTop_toBottomOf="@+id/button_total" />
 </android.support.constraint.ConstraintLayout>

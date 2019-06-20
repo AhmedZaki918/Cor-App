@@ -2,12 +2,13 @@
     <string name="app_name">Stretch</string>
     <string name="total_weight">Total weight</string>
     <string name="cor_weight">Cor weight</string>
-    <string name="stretch_price">Price</string>
-    <string name="real_cost">Your cost  =</string>
+    <string name="stretch_price">Stretch price</string>
+    <string name="real_cost">Your cost =</string>
     <string name="egp">EGP</string>
     <string name="net">Net</string>
+    <string name="kg">kg</string>
     <string name="total">Total</string>
-    <string name="clear">Clear</string>
+    <string name="clear">C</string>
     <string name="plus">+</string>
     <string name="zero">0</string>
 </resources>
