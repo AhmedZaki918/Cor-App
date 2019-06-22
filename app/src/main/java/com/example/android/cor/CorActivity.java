@@ -2,10 +2,12 @@ package com.example.android.cor;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
@@ -14,6 +16,7 @@ import butterknife.ButterKnife;
 
 // Main Activity class
 public class CorActivity extends AppCompatActivity {
+
 
     // Initializations for variables
     private final static double COR_PRICE = 12;
@@ -34,6 +37,11 @@ public class CorActivity extends AppCompatActivity {
 
     // Variable to format the result
     private double formatted;
+
+    // String Variables to store the data passed from each EditText
+    String getValueCorWeight;
+    String getValueTotalWeight;
+    String getValueStretchPrice;
 
 
     @Override
@@ -67,53 +75,70 @@ public class CorActivity extends AppCompatActivity {
         });
     }
 
+
     // The whole operation of net price
     private void calcNet() {
-        // Get data form all EditText and convert it to double
-        double getValueCorWeight = Double.parseDouble(corWeight.getText().toString());
-        double getValueTotalWeight = Double.parseDouble(totalWeight.getText().toString());
-        double getValueStretchPrice = Double.parseDouble(stretchPrice.getText().toString());
+        // Extract the values from each EditText
+        getAllEditTexts();
 
-        // Calculate the cost of cor
-        double calcCostCor = getValueCorWeight * COR_PRICE;
+        if (TextUtils.isEmpty(getValueCorWeight) || TextUtils.isEmpty(getValueTotalWeight) || TextUtils.isEmpty(getValueStretchPrice)) {
+            //Log.e(LOG_TAG, "The values are: " + getValueCorWeight );
+            Toast.makeText(this, R.string.missing_fields, Toast.LENGTH_SHORT).show();
 
-        // Calculate the net weight
-        double netWeight = getValueTotalWeight - getValueCorWeight;
+        } else {
+            // Calculate the cost of cor
+            double calcCostCor = Double.parseDouble(getValueCorWeight) * COR_PRICE;
 
-        // Calculate the final net weight
-        double cost = (getValueTotalWeight - getValueCorWeight);
-        cost = cost * getValueStretchPrice;
-        cost = cost + calcCostCor;
-        double result = cost / netWeight;
+            // Calculate the net weight
+            double netWeight = Double.parseDouble(getValueTotalWeight) - Double.parseDouble(getValueCorWeight);
 
-        // format the double to 2 digit
-        formatter(result);
+            // Calculate the final net weight
+            double cost = Double.parseDouble(getValueTotalWeight) - Double.parseDouble(getValueCorWeight);
+            cost = cost * Double.parseDouble(getValueStretchPrice);
+            cost = cost + calcCostCor;
+            double result = cost / netWeight;
 
-        // Display the final cost
-        realCost.setText(formatted + "");
+            // format the double to 2 digit
+            formatter(result);
+
+            // Display the final cost
+            realCost.setText(formatted + "");
+        }
     }
 
     // The whole operation of total price
     private void calcTotal() {
-        // Get data form all EditText and convert it to double
-        double getValueCorWeight = Double.parseDouble(corWeight.getText().toString());
-        double getValueTotalWeight = Double.parseDouble(totalWeight.getText().toString());
-        double getValueStretchPrice = Double.parseDouble(stretchPrice.getText().toString());
+        // Extract the values from each EditText
+        getAllEditTexts();
 
-        // Calculate the cost of cor
-        double calcCostCor = getValueCorWeight * COR_PRICE;
+        if (TextUtils.isEmpty(getValueCorWeight) || TextUtils.isEmpty(getValueTotalWeight) || TextUtils.isEmpty(getValueStretchPrice)) {
+            //Log.e(LOG_TAG, "The values are: " + getValueCorWeight );
+            Toast.makeText(this, R.string.missing_fields, Toast.LENGTH_SHORT).show();
 
-        // Calculate the final total weight
-        double cost = (getValueTotalWeight - getValueCorWeight);
-        cost = cost * getValueStretchPrice;
-        cost = cost + calcCostCor;
-        double result = cost / getValueTotalWeight;
+        } else {
+            // Calculate the cost of cor
+            double calcCostCor = Double.parseDouble(getValueCorWeight) * COR_PRICE;
 
-        // format the double to 2 digit
-        formatter(result);
+            // Calculate the final total weight
+            double cost = Double.parseDouble(getValueTotalWeight) - Double.parseDouble(getValueCorWeight);
+            cost = cost * Double.parseDouble(getValueStretchPrice);
+            cost = cost + calcCostCor;
+            double result = cost / Double.parseDouble(getValueTotalWeight);
 
-        // Display the final cost
-        realCost.setText(formatted + "");
+            // format the double to 2 digit
+            formatter(result);
+
+            // Display the final cost
+            realCost.setText(formatted + "");
+        }
+    }
+
+    // Extract all values from each EditText and store it in string variables
+    private void getAllEditTexts() {
+        // Get the data from all EditTexts
+        getValueCorWeight = corWeight.getText().toString();
+        getValueTotalWeight = totalWeight.getText().toString();
+        getValueStretchPrice = stretchPrice.getText().toString();
     }
 
     // Clear all data in all views
