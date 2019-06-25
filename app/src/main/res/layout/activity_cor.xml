@@ -26,7 +26,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="150dp"
-        android:ems="5"
+        android:ems="4"
         android:gravity="center_horizontal"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +63,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="140dp"
-        android:ems="5"
+        android:ems="4"
         android:gravity="center_horizontal"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,7 +100,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="150dp"
-        android:ems="5"
+        android:ems="4"
         android:gravity="center_horizontal"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -219,4 +219,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/text_view_result_total"
         app:layout_constraintTop_toBottomOf="@+id/text_view_currency1" />
+
+    <Button
+        android:id="@+id/button_plus"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="60dp"
+        android:text="@string/plus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_kg"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_subtract"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
+        android:text="@string/subtract"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_plus"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.example.android.cor;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +35,11 @@ public class CorActivity extends AppCompatActivity {
     Button run;
     @BindView(R.id.button_clear)
     Button clear;
+    @BindView(R.id.button_plus)
+    Button plus;
+    @BindView(R.id.button_subtract)
+    Button subtract;
+
 
     // Variable to format the result
     private double formatted;
@@ -64,6 +70,54 @@ public class CorActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 clearAll();
+            }
+        });
+
+        // This button add one on the number
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // String object to store the given text from EditText
+                String weight = totalWeight.getText().toString().trim();
+                // Double object to assign it 0 value if weight object is empty
+                double weightField;
+                // If the weight object is empty, assign 0 then add 0.5 to it
+                if (weight.isEmpty()) {
+                    weightField = 0;
+                    weightField += 0.5;
+                    totalWeight.setText(weightField + "");
+                } else {
+                    // Convert weight object to double and store it in converted object
+                    double converted = Double.parseDouble(weight);
+                    converted += 0.5;
+                    totalWeight.setText(converted + "");
+                }
+            }
+        });
+
+        // This button subtract one from the number
+        subtract.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // String object to store the given text from EditText
+                String weight = totalWeight.getText().toString().trim();
+                // Double object to assign it 0 value if weight object is empty
+                double weightField;
+                // If the weight object is empty, assign 0
+                if (weight.isEmpty()) {
+                    weightField = 0;
+                    totalWeight.setText(weightField + "");
+                } else {
+                    // Convert weight object to double and store it in converted object
+                    double converted = Double.parseDouble(weight);
+                    // If the converted object is equal to zero or less than zero, assign zero to it
+                    if (converted <= 0) {
+                        converted = 0;
+                    } else {
+                        converted -= 0.5;
+                    }
+                    totalWeight.setText(converted + "");
+                }
             }
         });
     }
