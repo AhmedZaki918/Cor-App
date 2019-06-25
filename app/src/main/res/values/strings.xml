@@ -3,9 +3,10 @@
     <string name="total_weight">Total weight</string>
     <string name="cor_weight">Cor weight</string>
     <string name="stretch_price">Stretch price</string>
-    <string name="real_cost">Your cost =</string>
+    <string name="net_cost">Net cost =</string>
+    <string name="total_cost">Total cost =</string>
     <string name="egp">EGP</string>
-    <string name="net">Net</string>
+    <string name="calculate">Run</string>
     <string name="kg">kg</string>
     <string name="total">Total</string>
     <string name="clear">C</string>

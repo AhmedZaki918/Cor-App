@@ -26,12 +26,12 @@ public class CorActivity extends AppCompatActivity {
     EditText corWeight;
     @BindView(R.id.edit_text_stretchPrice)
     EditText stretchPrice;
-    @BindView(R.id.text_view_result)
-    TextView realCost;
-    @BindView(R.id.button_net)
-    Button net;
-    @BindView(R.id.button_total)
-    Button total;
+    @BindView(R.id.text_view_result_net)
+    TextView netCost;
+    @BindView(R.id.text_view_result_total)
+    TextView totalCost;
+    @BindView(R.id.button_run)
+    Button run;
     @BindView(R.id.button_clear)
     Button clear;
 
@@ -50,18 +50,11 @@ public class CorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cor);
         ButterKnife.bind(this);
 
-        // This button Calculate the net price
-        net.setOnClickListener(new View.OnClickListener() {
+        // This button Calculate the total and net price
+        run.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 calcNet();
-            }
-        });
-
-        // This Button Calculate the Total price
-        total.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 calcTotal();
             }
         });
@@ -76,7 +69,7 @@ public class CorActivity extends AppCompatActivity {
     }
 
 
-    // The whole operation of net price
+    // The whole operation of run price
     private void calcNet() {
         // Extract the values from each EditText
         getAllEditTexts();
@@ -89,10 +82,10 @@ public class CorActivity extends AppCompatActivity {
             // Calculate the cost of cor
             double calcCostCor = Double.parseDouble(getValueCorWeight) * COR_PRICE;
 
-            // Calculate the net weight
+            // Calculate the run weight
             double netWeight = Double.parseDouble(getValueTotalWeight) - Double.parseDouble(getValueCorWeight);
 
-            // Calculate the final net weight
+            // Calculate the final run weight
             double cost = Double.parseDouble(getValueTotalWeight) - Double.parseDouble(getValueCorWeight);
             cost = cost * Double.parseDouble(getValueStretchPrice);
             cost = cost + calcCostCor;
@@ -102,7 +95,7 @@ public class CorActivity extends AppCompatActivity {
             formatter(result);
 
             // Display the final cost
-            realCost.setText(formatted + "");
+            netCost.setText(formatted + "");
         }
     }
 
@@ -129,7 +122,7 @@ public class CorActivity extends AppCompatActivity {
             formatter(result);
 
             // Display the final cost
-            realCost.setText(formatted + "");
+            totalCost.setText(formatted + "");
         }
     }
 
@@ -146,7 +139,8 @@ public class CorActivity extends AppCompatActivity {
         totalWeight.setText("");
         corWeight.setText("");
         stretchPrice.setText("");
-        realCost.setText(0 + "");
+        netCost.setText(0 + "");
+        totalCost.setText(0 + "");
     }
 
     // format the double number

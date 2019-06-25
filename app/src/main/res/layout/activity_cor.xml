@@ -119,50 +119,38 @@
         app:layout_constraintTop_toBottomOf="@+id/text_view_kg1" />
 
     <Button
-        android:id="@+id/button_total"
+        android:id="@+id/button_run"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="253dp"
-        android:text="@string/total"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="250dp"
+        android:text="@string/calculate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_stretchPrice" />
-
-    <Button
-        android:id="@+id/button_net"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="150dp"
-        android:text="@string/net"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_total"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_stretchPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_stretchPrice" />
 
     <Button
         android:id="@+id/button_clear"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="110dp"
+        android:layout_marginEnd="200dp"
         android:text="@string/clear"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_net"
+        app:layout_constraintStart_toEndOf="@+id/button_run"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_stretchPrice" />
 
     <TextView
-        android:id="@+id/text_view_cost"
+        android:id="@+id/text_view_net"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="317dp"
-        android:text="@string/real_cost"
+        android:text="@string/net_cost"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_total" />
+        app:layout_constraintTop_toBottomOf="@+id/button_run" />
 
 
     <TextView
@@ -173,14 +161,14 @@
         android:layout_marginEnd="130dp"
         android:text="@string/egp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text_view_cost"
+        app:layout_constraintStart_toEndOf="@+id/text_view_net"
         app:layout_constraintTop_toBottomOf="@+id/button_clear" />
 
     <TextView
-        android:id="@+id/text_view_result"
+        android:id="@+id/text_view_result_net"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:gravity="center_horizontal"
         android:text="@string/zero"
@@ -188,6 +176,47 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/text_view_currency1"
-        app:layout_constraintStart_toEndOf="@+id/text_view_cost"
-        app:layout_constraintTop_toBottomOf="@+id/button_total" />
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toEndOf="@+id/text_view_net"
+        app:layout_constraintTop_toBottomOf="@+id/button_run" />
+
+    <TextView
+        android:id="@+id/text_view_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="317dp"
+        android:text="@string/total_cost"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_net" />
+
+    <TextView
+        android:id="@+id/text_view_result_total"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="233dp"
+        android:gravity="center_horizontal"
+        android:text="@string/zero"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_total"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_result_net" />
+
+    <TextView
+        android:id="@+id/text_view_currency2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="190dp"
+        android:text="@string/egp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_result_total"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_currency1" />
 </android.support.constraint.ConstraintLayout>
