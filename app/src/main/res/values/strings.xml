@@ -14,4 +14,8 @@
     <string name="subtract">-</string>
     <string name="zero">0</string>
     <string name="missing_fields">Enter missing fields</string>
+    <string name="button_50">50</string>
+    <string name="button_150">150</string>
+    <string name="saved">Saved</string>
+    <string name="enter_price">Enter your price</string>
 </resources>

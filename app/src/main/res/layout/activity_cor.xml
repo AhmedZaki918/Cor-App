@@ -173,7 +173,6 @@
         android:gravity="center_horizontal"
         android:text="@string/zero"
         android:textColor="@color/black"
-        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/text_view_currency1"
         app:layout_constraintHorizontal_bias="0.764"
@@ -203,7 +202,6 @@
         android:gravity="center_horizontal"
         android:text="@string/zero"
         android:textColor="@color/black"
-        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/text_view_total"
@@ -236,9 +234,56 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="30dp"
         android:text="@string/subtract"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_plus"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_50"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="60dp"
+        android:text="@string/button_50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_kg1"
+        app:layout_constraintTop_toBottomOf="@+id/button_plus" />
+
+    <Button
+        android:id="@+id/button_150"
+        android:layout_width="48dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="25dp"
+        android:text="@string/button_150"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_50"
+        app:layout_constraintTop_toBottomOf="@+id/button_subtract" />
+
+    <ImageButton
+        android:id="@+id/image_button_lock"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="89dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_currency"
+        app:layout_constraintTop_toBottomOf="@+id/button_50"
+        app:srcCompat="@drawable/baseline_lock_open_black_18" />
+
+
+
+    <Button
+        android:id="@+id/button_clear_lock"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/clear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/image_button_lock"
+        app:layout_constraintTop_toBottomOf="@+id/button_150" />
 </android.support.constraint.ConstraintLayout>

@@ -1,12 +1,14 @@
 package com.example.android.cor;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,9 +20,7 @@ import butterknife.ButterKnife;
 // Main Activity class
 public class CorActivity extends AppCompatActivity {
 
-
     // Initializations for variables
-    private final static double COR_PRICE = 12;
     @BindView(R.id.edit_text_totalWeight)
     EditText totalWeight;
     @BindView(R.id.edit_text_corWeight)
@@ -39,10 +39,23 @@ public class CorActivity extends AppCompatActivity {
     Button plus;
     @BindView(R.id.button_subtract)
     Button subtract;
+    @BindView(R.id.button_50)
+    Button fifty;
+    @BindView(R.id.button_150)
+    Button oneHundredFifty;
+    @BindView(R.id.image_button_lock)
+    ImageButton lock;
+    @BindView(R.id.button_clear_lock)
+    Button clearLock;
 
 
     // Variable to format the result
     private double formatted;
+
+    // Initializations for static variables
+    private final static double COR_PRICE = 12;
+    private static final double FIFTY = 0.050;
+    private static final double ONE_HUNDRED_FIFTY = 0.150;
 
     // String Variables to store the data passed from each EditText
     String getValueCorWeight;
@@ -55,6 +68,9 @@ public class CorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cor);
         ButterKnife.bind(this);
+
+        // Displays the stretch price once activity is opened
+        load();
 
         // This button Calculate the total and net price
         run.setOnClickListener(new View.OnClickListener() {
@@ -120,8 +136,73 @@ public class CorActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // This button displays core weight (0.050 kg) in EditText
+        fifty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayCorWeight(FIFTY);
+            }
+        });
+
+        //  This button displays core weight (0.150 kg) in EditText
+        oneHundredFifty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayCorWeight(ONE_HUNDRED_FIFTY);
+            }
+        });
+
+        // Saves the stretch price
+        lock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                save();
+            }
+        });
+
+        // Clear the stretch price
+        clearLock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stretchPrice.setText("");
+            }
+        });
     }
 
+    // This method saves the stretch price in shared preference
+    private void save() {
+        // String object to store the given price from the user
+        String stretchPriceFeild = stretchPrice.getText().toString();
+        // Check if the stretch price is empty or not to change the toast message
+        if (TextUtils.isEmpty(stretchPriceFeild)) {
+            // Toast message to tell the user to enter the price of stretch
+            Toast.makeText(this, R.string.enter_price, Toast.LENGTH_SHORT).show();
+        } else {
+            SharedPreferences shrd = getSharedPreferences("file", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = shrd.edit();
+            editor.putString("input", stretchPrice.getText().toString());
+            editor.apply();
+            // Toast message to confirm the price was saved
+            Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // This method retrieve the stretch price in shared preference
+    private void load() {
+        SharedPreferences shrd = getSharedPreferences("file", Context.MODE_PRIVATE);
+        String name = shrd.getString("input", "0");
+        stretchPrice.setText(name);
+    }
+
+    /**
+     * This method take the given parameter and display it on the EditText
+     *
+     * @param coreWeight both core weight (0.050 kg, 0.150 kg)
+     */
+    private void displayCorWeight(double coreWeight) {
+        corWeight.setText(coreWeight + "");
+    }
 
     // The whole operation of run price
     private void calcNet() {
@@ -135,19 +216,15 @@ public class CorActivity extends AppCompatActivity {
         } else {
             // Calculate the cost of cor
             double calcCostCor = Double.parseDouble(getValueCorWeight) * COR_PRICE;
-
             // Calculate the run weight
             double netWeight = Double.parseDouble(getValueTotalWeight) - Double.parseDouble(getValueCorWeight);
-
             // Calculate the final run weight
             double cost = Double.parseDouble(getValueTotalWeight) - Double.parseDouble(getValueCorWeight);
             cost = cost * Double.parseDouble(getValueStretchPrice);
             cost = cost + calcCostCor;
             double result = cost / netWeight;
-
             // format the double to 2 digit
             formatter(result);
-
             // Display the final cost
             netCost.setText(formatted + "");
         }
@@ -165,16 +242,13 @@ public class CorActivity extends AppCompatActivity {
         } else {
             // Calculate the cost of cor
             double calcCostCor = Double.parseDouble(getValueCorWeight) * COR_PRICE;
-
             // Calculate the final total weight
             double cost = Double.parseDouble(getValueTotalWeight) - Double.parseDouble(getValueCorWeight);
             cost = cost * Double.parseDouble(getValueStretchPrice);
             cost = cost + calcCostCor;
             double result = cost / Double.parseDouble(getValueTotalWeight);
-
             // format the double to 2 digit
             formatter(result);
-
             // Display the final cost
             totalCost.setText(formatted + "");
         }
@@ -192,7 +266,6 @@ public class CorActivity extends AppCompatActivity {
     private void clearAll() {
         totalWeight.setText("");
         corWeight.setText("");
-        stretchPrice.setText("");
         netCost.setText(0 + "");
         totalCost.setText(0 + "");
     }
