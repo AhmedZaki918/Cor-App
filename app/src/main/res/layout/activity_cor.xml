@@ -11,11 +11,10 @@
         android:id="@+id/text_view_totalWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="49dp"
-        android:layout_marginEnd="304dp"
         android:text="@string/total_weight"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_corWeight"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,11 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="150dp"
         android:ems="4"
         android:gravity="center_horizontal"
         android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_kg"
         app:layout_constraintStart_toEndOf="@+id/text_view_totalWeight"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,11 +35,10 @@
         android:id="@+id/text_view_corWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="35dp"
-        android:layout_marginEnd="304dp"
         android:text="@string/cor_weight"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_stretchPrice"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_totalWeight" />
 
@@ -50,9 +47,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
-        android:layout_marginEnd="140dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/kg"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_plus"
         app:layout_constraintStart_toEndOf="@+id/edit_text_totalWeight"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,13 +57,12 @@
         android:id="@+id/edit_text_corWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="140dp"
         android:ems="4"
         android:gravity="center_horizontal"
         android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_kg1"
         app:layout_constraintStart_toEndOf="@+id/text_view_corWeight"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_totalWeight" />
 
@@ -74,10 +70,10 @@
         android:id="@+id/text_view_kg1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="140dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/kg"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_50"
         app:layout_constraintStart_toEndOf="@+id/edit_text_corWeight"
         app:layout_constraintTop_toBottomOf="@+id/text_view_kg" />
 
@@ -85,11 +81,10 @@
         android:id="@+id/text_view_stretchPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="35dp"
-        android:layout_marginEnd="309dp"
         android:text="@string/stretch_price"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_cor_price"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_corWeight" />
 
@@ -98,12 +93,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="150dp"
+        android:layout_marginTop="8dp"
         android:ems="4"
         android:gravity="center_horizontal"
         android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_currency"
         app:layout_constraintStart_toEndOf="@+id/text_view_stretchPrice"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_corWeight" />
 
@@ -111,84 +105,84 @@
         android:id="@+id/text_view_currency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="130dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/egp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/image_button_lock"
         app:layout_constraintStart_toEndOf="@+id/edit_text_stretchPrice"
         app:layout_constraintTop_toBottomOf="@+id/text_view_kg1" />
 
     <Button
         android:id="@+id/button_run"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
-        android:layout_marginEnd="250dp"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
         android:text="@string/calculate"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_clear"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_stretchPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_total" />
 
     <Button
         android:id="@+id/button_clear"
         android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="250dp"
         android:text="@string/clear"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toEndOf="@+id/button_run"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_stretchPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_result_total" />
 
     <TextView
         android:id="@+id/text_view_net"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="317dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="35dp"
         android:text="@string/net_cost"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_total"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_run" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_cor_price" />
 
 
     <TextView
         android:id="@+id/text_view_currency1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="130dp"
         android:text="@string/egp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.58"
         app:layout_constraintStart_toEndOf="@+id/text_view_net"
-        app:layout_constraintTop_toBottomOf="@+id/button_clear" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_cor_price" />
 
     <TextView
         android:id="@+id/text_view_result_net"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
         android:gravity="center_horizontal"
         android:text="@string/zero"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/text_view_currency1"
-        app:layout_constraintHorizontal_bias="0.764"
         app:layout_constraintStart_toEndOf="@+id/text_view_net"
-        app:layout_constraintTop_toBottomOf="@+id/button_run" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_cor_price" />
 
     <TextView
         android:id="@+id/text_view_total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="317dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="28dp"
         android:text="@string/total_cost"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintBottom_toTopOf="@+id/button_run"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_net" />
 
@@ -196,14 +190,12 @@
         android:id="@+id/text_view_result_total"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="233dp"
+        android:layout_marginTop="24dp"
         android:gravity="center_horizontal"
         android:text="@string/zero"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_currency2"
         app:layout_constraintStart_toEndOf="@+id/text_view_total"
         app:layout_constraintTop_toBottomOf="@+id/text_view_result_net" />
 
@@ -211,8 +203,8 @@
         android:id="@+id/text_view_currency2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="190dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="180dp"
         android:text="@string/egp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/text_view_result_total"
@@ -223,9 +215,8 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="60dp"
         android:text="@string/plus"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_subtract"
         app:layout_constraintStart_toEndOf="@+id/text_view_kg"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -234,7 +225,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="40dp"
         android:text="@string/subtract"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_plus"
@@ -244,10 +235,9 @@
         android:id="@+id/button_50"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="16dp"
         android:text="@string/button_50"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_150"
         app:layout_constraintStart_toEndOf="@+id/text_view_kg1"
         app:layout_constraintTop_toBottomOf="@+id/button_plus" />
 
@@ -255,8 +245,8 @@
         android:id="@+id/button_150"
         android:layout_width="48dp"
         android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
         android:text="@string/button_150"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_50"
@@ -266,24 +256,58 @@
         android:id="@+id/image_button_lock"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="89dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/button_clear_lock"
         app:layout_constraintStart_toEndOf="@+id/text_view_currency"
         app:layout_constraintTop_toBottomOf="@+id/button_50"
         app:srcCompat="@drawable/baseline_lock_open_black_18" />
-
 
 
     <Button
         android:id="@+id/button_clear_lock"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
         android:text="@string/clear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/image_button_lock"
         app:layout_constraintTop_toBottomOf="@+id/button_150" />
+
+    <TextView
+        android:id="@+id/text_view_cor_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="35dp"
+        android:text="@string/cor_price"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_net"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_stretchPrice" />
+
+    <EditText
+        android:id="@+id/edit_text_cor_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:ems="4"
+        android:gravity="center_horizontal"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_currency3"
+        app:layout_constraintStart_toEndOf="@+id/text_view_cor_price"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_stretchPrice" />
+
+    <TextView
+        android:id="@+id/text_view_currency3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/egp"
+        app:layout_constraintEnd_toStartOf="@+id/image_button_lock"
+        app:layout_constraintStart_toEndOf="@+id/edit_text_cor_price"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_currency" />
+
 </android.support.constraint.ConstraintLayout>

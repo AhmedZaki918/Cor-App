@@ -27,6 +27,8 @@ public class CorActivity extends AppCompatActivity {
     EditText corWeight;
     @BindView(R.id.edit_text_stretchPrice)
     EditText stretchPrice;
+    @BindView(R.id.edit_text_cor_price)
+    EditText corPrice;
     @BindView(R.id.text_view_result_net)
     TextView netCost;
     @BindView(R.id.text_view_result_total)
@@ -53,7 +55,6 @@ public class CorActivity extends AppCompatActivity {
     private double formatted;
 
     // Initializations for static variables
-    private final static double COR_PRICE = 12;
     private static final double FIFTY = 0.050;
     private static final double ONE_HUNDRED_FIFTY = 0.150;
 
@@ -61,6 +62,7 @@ public class CorActivity extends AppCompatActivity {
     String getValueCorWeight;
     String getValueTotalWeight;
     String getValueStretchPrice;
+    String getValueCorPrice;
 
 
     @Override
@@ -69,7 +71,7 @@ public class CorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cor);
         ButterKnife.bind(this);
 
-        // Displays the stretch price once activity is opened
+        // Displays the price of stretch and cor once activity is opened
         load();
 
         // This button Calculate the total and net price
@@ -157,7 +159,7 @@ public class CorActivity extends AppCompatActivity {
         lock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                save();
+                save(stretchPrice, corPrice);
             }
         });
 
@@ -166,22 +168,25 @@ public class CorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 stretchPrice.setText("");
+                corPrice.setText("");
             }
         });
     }
 
-    // This method saves the stretch price in shared preference
-    private void save() {
+    // This method saves the price of stretch and cor in shared preference
+    private void save(EditText corPrice, EditText stretchPrice) {
         // String object to store the given price from the user
-        String stretchPriceFeild = stretchPrice.getText().toString();
-        // Check if the stretch price is empty or not to change the toast message
-        if (TextUtils.isEmpty(stretchPriceFeild)) {
-            // Toast message to tell the user to enter the price of stretch
+        String priceOfCor = corPrice.getText().toString();
+        String priceOfStretch = stretchPrice.getText().toString();
+        // Check if the price is empty or not to change the toast message
+        if (TextUtils.isEmpty(priceOfCor) || TextUtils.isEmpty(priceOfStretch)) {
+            // Toast message to tell the user to enter the price
             Toast.makeText(this, R.string.enter_price, Toast.LENGTH_SHORT).show();
         } else {
             SharedPreferences shrd = getSharedPreferences("file", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = shrd.edit();
-            editor.putString("input", stretchPrice.getText().toString());
+            editor.putString("cor", corPrice.getText().toString());
+            editor.putString("stretch", stretchPrice.getText().toString());
             editor.apply();
             // Toast message to confirm the price was saved
             Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show();
@@ -191,8 +196,10 @@ public class CorActivity extends AppCompatActivity {
     // This method retrieve the stretch price in shared preference
     private void load() {
         SharedPreferences shrd = getSharedPreferences("file", Context.MODE_PRIVATE);
-        String name = shrd.getString("input", "0");
-        stretchPrice.setText(name);
+        String cor = shrd.getString("cor", "0");
+        String stretch = shrd.getString("stretch", "0");
+        stretchPrice.setText(cor);
+        corPrice.setText(stretch);
     }
 
     /**
@@ -204,21 +211,20 @@ public class CorActivity extends AppCompatActivity {
         corWeight.setText(coreWeight + "");
     }
 
-    // The whole operation of run price
+    // The whole operation of net price
     private void calcNet() {
         // Extract the values from each EditText
         getAllEditTexts();
 
         if (TextUtils.isEmpty(getValueCorWeight) || TextUtils.isEmpty(getValueTotalWeight) || TextUtils.isEmpty(getValueStretchPrice)) {
-            //Log.e(LOG_TAG, "The values are: " + getValueCorWeight );
             Toast.makeText(this, R.string.missing_fields, Toast.LENGTH_SHORT).show();
 
         } else {
             // Calculate the cost of cor
-            double calcCostCor = Double.parseDouble(getValueCorWeight) * COR_PRICE;
-            // Calculate the run weight
+            double calcCostCor = Double.parseDouble(getValueCorWeight) * Double.parseDouble(getValueCorPrice);
+            // Calculate the net weight
             double netWeight = Double.parseDouble(getValueTotalWeight) - Double.parseDouble(getValueCorWeight);
-            // Calculate the final run weight
+            // Calculate the final net weight
             double cost = Double.parseDouble(getValueTotalWeight) - Double.parseDouble(getValueCorWeight);
             cost = cost * Double.parseDouble(getValueStretchPrice);
             cost = cost + calcCostCor;
@@ -241,7 +247,7 @@ public class CorActivity extends AppCompatActivity {
 
         } else {
             // Calculate the cost of cor
-            double calcCostCor = Double.parseDouble(getValueCorWeight) * COR_PRICE;
+            double calcCostCor = Double.parseDouble(getValueCorWeight) * Double.parseDouble(getValueCorPrice);
             // Calculate the final total weight
             double cost = Double.parseDouble(getValueTotalWeight) - Double.parseDouble(getValueCorWeight);
             cost = cost * Double.parseDouble(getValueStretchPrice);
@@ -260,6 +266,7 @@ public class CorActivity extends AppCompatActivity {
         getValueCorWeight = corWeight.getText().toString();
         getValueTotalWeight = totalWeight.getText().toString();
         getValueStretchPrice = stretchPrice.getText().toString();
+        getValueCorPrice = corPrice.getText().toString();
     }
 
     // Clear all data in all views
