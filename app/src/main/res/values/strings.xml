@@ -1,22 +1,24 @@
 <resources>
     <string name="app_name">Stretch</string>
-    <string name="total_weight">Total weight</string>
+    <string name="plastic">Plastic</string>
     <string name="cor_weight">Cor weight</string>
-    <string name="stretch_price">Stretch price</string>
-    <string name="cor_price">Cor price</string>
-    <string name="net_cost">Net cost =</string>
-    <string name="total_cost">Total cost =</string>
-    <string name="egp">EGP</string>
-    <string name="calculate">Run</string>
-    <string name="kg">kg</string>
-    <string name="total">Total</string>
-    <string name="clear">C</string>
+    <string name="price">Prices</string>
+    <string name="net_cost">Net Cost</string>
+    <string name="total_cost">Total Cost</string>
+    <string name="calculate">Calculate</string>
+    <string name="clear">Clear</string>
     <string name="plus">+</string>
     <string name="subtract">-</string>
-    <string name="zero">0</string>
+    <string name="zero">00.00</string>
     <string name="missing_fields">Enter missing fields</string>
-    <string name="button_50">50</string>
-    <string name="button_150">150</string>
     <string name="saved">Saved</string>
     <string name="enter_price">Enter your price</string>
+    <string name="weights">Weights</string>
+    <string name="minimum">From 0.5kg to 5kg</string>
+    <string name="cor">Cor</string>
+    <string name="cor_range">From 50g to 150g</string>
+    <string name="save">SAVE</string>
+    <string name="cost">Costs</string>
+    <string name="maximum_value">Maximum value is 5</string>
+    <string name="_0">0</string>
 </resources>

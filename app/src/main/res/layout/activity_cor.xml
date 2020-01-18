@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,307 +7,273 @@
     tools:context=".CorActivity">
 
 
-    <TextView
-        android:id="@+id/text_view_totalWeight"
-        android:layout_width="wrap_content"
+    <!-- Clear Button -->
+    <Button
+        android:id="@+id/btn_clear"
+        android:layout_width="185dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="49dp"
-        android:text="@string/total_weight"
-        app:layout_constraintBottom_toTopOf="@+id/text_view_corWeight"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edit_text_totalWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:ems="4"
-        android:gravity="center_horizontal"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toStartOf="@+id/text_view_kg"
-        app:layout_constraintStart_toEndOf="@+id/text_view_totalWeight"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text_view_corWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="35dp"
-        android:text="@string/cor_weight"
-        app:layout_constraintBottom_toTopOf="@+id/text_view_stretchPrice"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_totalWeight" />
-
-    <TextView
-        android:id="@+id/text_view_kg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
+        android:layout_marginStart="4dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/kg"
-        app:layout_constraintEnd_toStartOf="@+id/button_plus"
-        app:layout_constraintStart_toEndOf="@+id/edit_text_totalWeight"
+        android:background="@drawable/calculate_button"
+        android:text="@string/clear"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_calculate"
+        app:layout_constraintTop_toTopOf="@+id/btn_calculate" />
+
+
+    <!-- Prices Label -->
+    <TextView
+        android:id="@+id/tv_price_label"
+        style="@style/Labels"
+        android:layout_marginTop="32dp"
+        android:text="@string/price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_cor" />
+
+
+    <!-- Costs Label -->
+    <TextView
+        android:id="@+id/tv_prices_label"
+        style="@style/Labels"
+        android:layout_marginTop="32dp"
+        android:text="@string/cost"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+    <!-- Cor Label -->
+    <TextView
+        android:id="@+id/tv_cor_label"
+        style="@style/SubLabels"
+        android:text="@string/cor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_plastic" />
+
+
+    <!-- Plastic Label -->
+    <TextView
+        android:id="@+id/tv_plastic_label"
+        style="@style/SubLabels"
+        android:text="@string/plastic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_weight_label" />
+
+
+    <!-- Plus Button "Plastic" -->
+    <Button
+        android:id="@+id/btn_plus"
+        style="@style/ButtonPlus"
+        app:layout_constraintEnd_toStartOf="@+id/tv_totalWeight"
+        app:layout_constraintTop_toBottomOf="@+id/tv_weight_label" />
+
+
+    <!-- Subtract Button "Plastic" -->
+    <Button
+        android:id="@+id/btn_subtract"
+        style="@style/ButtonSub"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_weight_label" />
+
+
+    <!-- Plus Button "Cor" -->
+    <Button
+        android:id="@+id/btn_plus2"
+        style="@style/ButtonPlus"
+        app:layout_constraintEnd_toStartOf="@+id/tv_cor_weight"
+        app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_plastic" />
+
+
+    <!-- Subtract Button "Cor" -->
+    <Button
+        android:id="@+id/btn_subtract2"
+        style="@style/ButtonSub"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_plastic" />
+
+
+    <!-- Weight Label -->
+    <TextView
+        android:id="@+id/tv_weight_label"
+        style="@style/Labels"
+        android:layout_marginTop="16dp"
+        android:text="@string/weights"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edit_text_corWeight"
+
+    <!-- Sub Label for plastic header -->
+    <TextView
+        android:id="@+id/tv_subLabel_plastic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:ems="4"
-        android:gravity="center_horizontal"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toStartOf="@+id/text_view_kg1"
-        app:layout_constraintStart_toEndOf="@+id/text_view_corWeight"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_totalWeight" />
-
-    <TextView
-        android:id="@+id/text_view_kg1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/kg"
-        app:layout_constraintEnd_toStartOf="@+id/button_50"
-        app:layout_constraintStart_toEndOf="@+id/edit_text_corWeight"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_kg" />
-
-    <TextView
-        android:id="@+id/text_view_stretchPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="35dp"
-        android:text="@string/stretch_price"
-        app:layout_constraintBottom_toTopOf="@+id/text_view_cor_price"
+        android:text="@string/minimum"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_corWeight" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_plastic_label" />
 
-    <EditText
-        android:id="@+id/edit_text_stretchPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="4"
-        android:gravity="center_horizontal"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toStartOf="@+id/text_view_currency"
-        app:layout_constraintStart_toEndOf="@+id/text_view_stretchPrice"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_corWeight" />
 
+    <!-- Total weight TextView -->
     <TextView
-        android:id="@+id/text_view_currency"
+        android:id="@+id/tv_totalWeight"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text="@string/_0"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_subtract"
+        app:layout_constraintTop_toTopOf="@+id/btn_plus" />
+
+
+    <!-- Cor weight TextView -->
+    <TextView
+        android:id="@+id/tv_cor_weight"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text="@string/_0"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_subtract2"
+        app:layout_constraintTop_toTopOf="@+id/btn_plus2" />
+
+
+    <!-- Sub Label for cor header -->
+    <TextView
+        android:id="@+id/tv_subLabel_cor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/egp"
-        app:layout_constraintEnd_toStartOf="@+id/image_button_lock"
-        app:layout_constraintStart_toEndOf="@+id/edit_text_stretchPrice"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_kg1" />
+        android:layout_marginStart="16dp"
+        android:text="@string/cor_range"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cor_label" />
+
+
+    <!-- Plastic price EditText -->
+    <EditText
+        android:id="@+id/et_plastic_price"
+        style="@style/EditText"
+        android:hint="@string/plastic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_price_label" />
+
+
+    <!-- Cor price EditText -->
+
+
+    <!-- Calculate Button -->
+    <EditText
+        android:id="@+id/et_cor_price"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_edit"
+        android:drawableStart="@drawable/ic_attach_money_black_24dp"
+        android:hint="@string/cor"
+        android:inputType="numberDecimal"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button_run"
-        android:layout_width="70dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
+        android:id="@+id/btn_calculate"
+        android:layout_width="185dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/calculate_button"
         android:text="@string/calculate"
-        app:layout_constraintEnd_toStartOf="@+id/button_clear"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_clear"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_total" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_net_cost" />
 
+
+    <!-- Save Button -->
     <Button
-        android:id="@+id/button_clear"
-        android:layout_width="48dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="250dp"
-        android:text="@string/clear"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.7"
-        app:layout_constraintStart_toEndOf="@+id/button_run"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_result_total" />
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/calculate_button"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/et_cor_price"
+        app:layout_constraintTop_toTopOf="@+id/et_cor_price" />
 
+
+    <!-- Net cost Label -->
     <TextView
-        android:id="@+id/text_view_net"
+        android:id="@+id/tv_netCost_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="@string/net_cost"
-        app:layout_constraintBottom_toTopOf="@+id/text_view_total"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_cor_price" />
-
-
-    <TextView
-        android:id="@+id/text_view_currency1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="130dp"
-        android:text="@string/egp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.58"
-        app:layout_constraintStart_toEndOf="@+id/text_view_net"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_cor_price" />
-
-    <TextView
-        android:id="@+id/text_view_result_net"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:gravity="center_horizontal"
-        android:text="@string/zero"
-        android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/text_view_currency1"
-        app:layout_constraintStart_toEndOf="@+id/text_view_net"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_cor_price" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_prices_label" />
 
+
+    <!-- Total cost Label -->
     <TextView
-        android:id="@+id/text_view_total"
+        android:id="@+id/tv_totalCost_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="@string/total_cost"
-        app:layout_constraintBottom_toTopOf="@+id/button_run"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_net" />
-
-    <TextView
-        android:id="@+id/text_view_result_total"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:gravity="center_horizontal"
-        android:text="@string/zero"
-        android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/text_view_currency2"
-        app:layout_constraintStart_toEndOf="@+id/text_view_total"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_result_net" />
+        app:layout_constraintStart_toEndOf="@+id/tv_netCost_label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_prices_label" />
 
+
+    <!-- Net cost TextView -->
     <TextView
-        android:id="@+id/text_view_currency2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="180dp"
-        android:text="@string/egp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text_view_result_total"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_currency1" />
-
-    <Button
-        android:id="@+id/button_plus"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="36dp"
-        android:text="@string/plus"
-        app:layout_constraintEnd_toStartOf="@+id/button_subtract"
-        app:layout_constraintStart_toEndOf="@+id/text_view_kg"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button_subtract"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="40dp"
-        android:text="@string/subtract"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_plus"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button_50"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/button_50"
-        app:layout_constraintEnd_toStartOf="@+id/button_150"
-        app:layout_constraintStart_toEndOf="@+id/text_view_kg1"
-        app:layout_constraintTop_toBottomOf="@+id/button_plus" />
-
-    <Button
-        android:id="@+id/button_150"
-        android:layout_width="48dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:text="@string/button_150"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_50"
-        app:layout_constraintTop_toBottomOf="@+id/button_subtract" />
-
-    <ImageButton
-        android:id="@+id/image_button_lock"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toStartOf="@+id/button_clear_lock"
-        app:layout_constraintStart_toEndOf="@+id/text_view_currency"
-        app:layout_constraintTop_toBottomOf="@+id/button_50"
-        app:srcCompat="@drawable/baseline_lock_open_black_18" />
-
-
-    <Button
-        android:id="@+id/button_clear_lock"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
-        android:text="@string/clear"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/image_button_lock"
-        app:layout_constraintTop_toBottomOf="@+id/button_150" />
-
-    <TextView
-        android:id="@+id/text_view_cor_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="35dp"
-        android:text="@string/cor_price"
-        app:layout_constraintBottom_toTopOf="@+id/text_view_net"
+        android:id="@+id/tv_net_cost"
+        style="@style/FinalCostTextView"
+        android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_stretchPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_netCost_label" />
 
-    <EditText
-        android:id="@+id/edit_text_cor_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:ems="4"
-        android:gravity="center_horizontal"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toStartOf="@+id/text_view_currency3"
-        app:layout_constraintStart_toEndOf="@+id/text_view_cor_price"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_stretchPrice" />
+
+    <!-- Total cost TextView -->
+    <TextView
+        android:id="@+id/tv_total_cost"
+        style="@style/FinalCostTextView"
+        app:layout_constraintStart_toStartOf="@+id/tv_totalCost_label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_netCost_label" />
 
     <TextView
-        android:id="@+id/text_view_currency3"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/egp"
-        app:layout_constraintEnd_toStartOf="@+id/image_button_lock"
-        app:layout_constraintStart_toEndOf="@+id/edit_text_cor_price"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_currency" />
+        android:layout_marginStart="24dp"
+        android:text="@string/plastic"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_plastic_price" />
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="@string/cor"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cor_price" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
