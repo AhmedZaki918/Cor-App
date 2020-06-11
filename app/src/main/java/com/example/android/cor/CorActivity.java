@@ -5,54 +5,28 @@ import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.Button;
+import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.android.cor.databinding.ActivityCorBinding;
 
 import java.text.DecimalFormat;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 // Main Activity class
-public class CorActivity extends AppCompatActivity {
+public class CorActivity extends AppCompatActivity implements OnClickHandler {
 
 
     // Constants for cor weight
     private static final double FIFTY = 0.05;
     private static final double ONE_HUNDRED_FIFTY = 0.15;
 
-    // Initializations for variables
-    @BindView(R.id.tv_totalWeight)
-    TextView tvTotalWeight;
-    @BindView(R.id.btn_plus)
-    Button btnPlus;
-    @BindView(R.id.btn_subtract)
-    Button btnSubtract;
-    @BindView(R.id.tv_cor_weight)
-    TextView tvCorWeight;
-    @BindView(R.id.btn_plus2)
-    Button btnPlus2;
-    @BindView(R.id.btn_subtract2)
-    Button btnSubtract2;
-    @BindView(R.id.btn_calculate)
-    Button btnCalculate;
-    @BindView(R.id.et_plastic_price)
-    EditText etPlasticPrice;
-    @BindView(R.id.et_cor_price)
-    EditText etCorPrice;
-    @BindView(R.id.tv_net_cost)
-    TextView tvNetCost;
-    @BindView(R.id.tv_total_cost)
-    TextView tvTotalCost;
-    @BindView(R.id.btn_clear)
-    Button btnClear;
-    @BindView(R.id.btn_save)
-    Button btnSave;
+    // DataBinding object
+    private ActivityCorBinding binding;
 
     // String Variables to store the data passed from each EditText
     private String corWeight;
@@ -70,57 +44,13 @@ public class CorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cor);
-        ButterKnife.bind(this);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_cor);
+
+        // Set click listener on DataBinding
+        binding.setClickHandler(this);
 
         // Displays the saved prices of Plastic and Cor once an activity is opened
         load();
-
-        // Click listener on calculate button
-        btnCalculate.setOnClickListener(view -> {
-            calcNet();
-            calcTotal();
-        });
-
-        // Click listener on clear button
-        btnClear.setOnClickListener(view -> clearAll());
-
-        // Click listener on plus button
-        btnPlus.setOnClickListener(v -> {
-            // If the plastic weight >= 5kg assign it to 5kg
-            if (plasticWeight >= 5) {
-                plasticWeight = 5;
-                // Toast message to notify the user this's maximum value
-                Toast.makeText(this, R.string.maximum_value, Toast.LENGTH_SHORT).show();
-
-                // Increase the weight by 0.5kg
-            } else {
-                plasticWeight += 0.5;
-                tvTotalWeight.setText(String.format("%s", plasticWeight));
-            }
-        });
-
-        // Click listener on subtract button
-        btnSubtract.setOnClickListener(v -> {
-            // If the plastic weight <= 0kg assign it to 0kg
-            if (plasticWeight <= 0) {
-                plasticWeight = 0;
-
-                // Decrease the weight by 0.5kg
-            } else {
-                plasticWeight -= 0.5;
-                tvTotalWeight.setText(String.format("%s", plasticWeight));
-            }
-        });
-
-        // Click listener on plus button2
-        btnPlus2.setOnClickListener(v -> displayCorWeight());
-
-        // Click listener on subtract button2
-        btnSubtract2.setOnClickListener(view -> checkCorWeight());
-
-        // Click listener on save button
-        btnSave.setOnClickListener(v -> save(etPlasticPrice, etCorPrice));
 
         // To retrieve all values if savedInstanceState object is not null
         if (savedInstanceState != null) {
@@ -131,10 +61,10 @@ public class CorActivity extends AppCompatActivity {
             totalCost = savedInstanceState.getString("totalCost");
 
             // Set those values on corresponding views
-            tvTotalWeight.setText(totalWeight);
-            tvCorWeight.setText(corWeight);
-            tvNetCost.setText(netCost);
-            tvTotalCost.setText(totalCost);
+            binding.tvTotalWeight.setText(totalWeight);
+            binding.tvCorWeight.setText(corWeight);
+            binding.tvNetCost.setText(netCost);
+            binding.tvTotalCost.setText(totalCost);
         }
     }
 
@@ -143,8 +73,8 @@ public class CorActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         // Get the values from views and store them
-        String netCost = tvNetCost.getText().toString();
-        String totalCost = tvTotalCost.getText().toString();
+        String netCost = binding.tvNetCost.getText().toString();
+        String totalCost = binding.tvTotalCost.getText().toString();
 
         // Save the values in outState object
         outState.putString("totalWeight", totalWeight);
@@ -191,8 +121,8 @@ public class CorActivity extends AppCompatActivity {
         String cor = shrd.getString("cor", "0");
         String stretch = shrd.getString("stretch", "0");
         // Displays the prices on screen
-        etPlasticPrice.setText(cor);
-        etCorPrice.setText(stretch);
+        binding.etPlasticPrice.setText(cor);
+        binding.etCorPrice.setText(stretch);
     }
 
 
@@ -203,12 +133,12 @@ public class CorActivity extends AppCompatActivity {
         // We created index variable to do 2 operations only.
         // If index = 0 displays 50g on screen
         if (index == 0) {
-            tvCorWeight.setText(String.format("%s", FIFTY));
+            binding.tvCorWeight.setText(String.format("%s", FIFTY));
 
             index++;
             // Displays 150g on screen
         } else {
-            tvCorWeight.setText(String.format("%s", ONE_HUNDRED_FIFTY));
+            binding.tvCorWeight.setText(String.format("%s", ONE_HUNDRED_FIFTY));
             index = 0;
         }
     }
@@ -219,12 +149,12 @@ public class CorActivity extends AppCompatActivity {
      */
     private void checkCorWeight() {
         // Store the cor weight in variable
-        String value = tvCorWeight.getText().toString();
+        String value = binding.tvCorWeight.getText().toString();
         // Convert the value variable to double
         double converted = Double.valueOf(value);
         // If the cor weight (converted) = 150g assign it to 50g
         if (converted == ONE_HUNDRED_FIFTY) {
-            tvCorWeight.setText(String.format("%s", FIFTY));
+            binding.tvCorWeight.setText(String.format("%s", FIFTY));
         }
     }
 
@@ -255,7 +185,7 @@ public class CorActivity extends AppCompatActivity {
             // Store returned value from formatter method
             double formattedValue = formatter(result);
             // Display the final cost
-            tvNetCost.setText(String.format("%s", formattedValue));
+            binding.tvNetCost.setText(String.format("%s", formattedValue));
         }
     }
 
@@ -283,7 +213,7 @@ public class CorActivity extends AppCompatActivity {
             // Store returned value from formatter method
             double formattedValue = formatter(result);
             // Display the final cost
-            tvTotalCost.setText(String.format("%s", formattedValue));
+            binding.tvTotalCost.setText(String.format("%s", formattedValue));
         }
     }
 
@@ -292,10 +222,10 @@ public class CorActivity extends AppCompatActivity {
      * Extract the values from all views to store it in variables
      */
     private void getAllEditTexts() {
-        corWeight = tvCorWeight.getText().toString();
-        totalWeight = tvTotalWeight.getText().toString();
-        stretchPrice = etPlasticPrice.getText().toString();
-        corPrice = etCorPrice.getText().toString();
+        corWeight = binding.tvCorWeight.getText().toString();
+        totalWeight = binding.tvTotalWeight.getText().toString();
+        stretchPrice = binding.etPlasticPrice.getText().toString();
+        corPrice = binding.etCorPrice.getText().toString();
     }
 
 
@@ -303,10 +233,10 @@ public class CorActivity extends AppCompatActivity {
      * Clear all values from all views if the user click on Clear Button
      */
     private void clearAll() {
-        tvTotalWeight.setText("0");
-        tvCorWeight.setText("0");
-        tvNetCost.setText(R.string.zero);
-        tvTotalCost.setText(R.string.zero);
+        binding.tvTotalWeight.setText("0");
+        binding.tvCorWeight.setText("0");
+        binding.tvNetCost.setText(R.string.zero);
+        binding.tvTotalCost.setText(R.string.zero);
         plasticWeight = 0;
     }
 
@@ -320,5 +250,59 @@ public class CorActivity extends AppCompatActivity {
     private double formatter(double costPrice) {
         DecimalFormat value = new DecimalFormat("#.##");
         return Double.parseDouble(value.format(costPrice));
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+
+            case R.id.btn_calculate:
+                calcNet();
+                calcTotal();
+                break;
+
+            case R.id.btn_clear:
+                clearAll();
+                break;
+
+            case R.id.btn_plus:
+                // If the plastic weight >=5 kg assign it to 5 kg
+                if (plasticWeight >= 5) {
+                    plasticWeight = 5;
+                    // Toast message to notify the user this's maximum value
+                    Toast.makeText(this, R.string.maximum_value, Toast.LENGTH_SHORT).show();
+
+                    // Increase the weight by 0.5kg
+                } else {
+                    plasticWeight += 0.5;
+                    binding.tvTotalWeight.setText(String.format("%s", plasticWeight));
+                }
+                break;
+
+            case R.id.btn_subtract:
+                // If the plastic weight <= 0kg assign it to 0kg
+                if (plasticWeight <= 0) {
+                    plasticWeight = 0;
+
+                    // Decrease the weight by 0.5kg
+                } else {
+                    plasticWeight -= 0.5;
+                    binding.tvTotalWeight.setText(String.format("%s", plasticWeight));
+                }
+                break;
+
+            case R.id.btn_plus2:
+                displayCorWeight();
+                break;
+
+            case R.id.btn_subtract2:
+                checkCorWeight();
+                break;
+
+            case R.id.btn_save:
+                save(binding.etPlasticPrice, binding.etCorPrice);
+                break;
+        }
     }
 }

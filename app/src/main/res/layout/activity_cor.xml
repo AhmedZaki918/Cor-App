@@ -1,279 +1,297 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CorActivity">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickHandler"
+            type="com.example.android.cor.OnClickHandler" />
+    </data>
 
 
-    <!-- Clear Button -->
-    <Button
-        android:id="@+id/btn_clear"
-        android:layout_width="185dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/calculate_button"
-        android:text="@string/clear"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_calculate"
-        app:layout_constraintTop_toTopOf="@+id/btn_calculate" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CorActivity">
 
 
-    <!-- Prices Label -->
-    <TextView
-        android:id="@+id/tv_price_label"
-        style="@style/Labels"
-        android:layout_marginTop="32dp"
-        android:text="@string/price"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_cor" />
+        <!-- Clear Button -->
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/calculate_button"
+            android:onClick="@{(v)-> clickHandler.onClick(v)}"
+            android:text="@string/clear"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_calculate"
+            app:layout_constraintTop_toTopOf="@+id/btn_calculate" />
 
 
-    <!-- Costs Label -->
-    <TextView
-        android:id="@+id/tv_prices_label"
-        style="@style/Labels"
-        android:layout_marginTop="32dp"
-        android:text="@string/cost"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        <!-- Prices Label -->
+        <TextView
+            android:id="@+id/tv_price_label"
+            style="@style/Labels"
+            android:layout_marginTop="32dp"
+            android:text="@string/price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_cor" />
 
 
-    <!-- Cor Label -->
-    <TextView
-        android:id="@+id/tv_cor_label"
-        style="@style/SubLabels"
-        android:text="@string/cor"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_plastic" />
+        <!-- Costs Label -->
+        <TextView
+            android:id="@+id/tv_prices_label"
+            style="@style/Labels"
+            android:layout_marginTop="32dp"
+            android:text="@string/cost"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 
-    <!-- Plastic Label -->
-    <TextView
-        android:id="@+id/tv_plastic_label"
-        style="@style/SubLabels"
-        android:text="@string/plastic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_weight_label" />
+        <!-- Cor Label -->
+        <TextView
+            android:id="@+id/tv_cor_label"
+            style="@style/SubLabels"
+            android:text="@string/cor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_plastic" />
 
 
-    <!-- Plus Button "Plastic" -->
-    <Button
-        android:id="@+id/btn_plus"
-        style="@style/ButtonPlus"
-        app:layout_constraintEnd_toStartOf="@+id/tv_totalWeight"
-        app:layout_constraintTop_toBottomOf="@+id/tv_weight_label" />
+        <!-- Plastic Label -->
+        <TextView
+            android:id="@+id/tv_plastic_label"
+            style="@style/SubLabels"
+            android:text="@string/plastic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_weight_label" />
 
 
-    <!-- Subtract Button "Plastic" -->
-    <Button
-        android:id="@+id/btn_subtract"
-        style="@style/ButtonSub"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_weight_label" />
+        <!-- Plus Button "Plastic" -->
+        <Button
+            android:id="@+id/btn_plus"
+            style="@style/ButtonPlus"
+            android:onClick="@{(v)-> clickHandler.onClick(v)}"
+            app:layout_constraintEnd_toStartOf="@+id/tv_totalWeight"
+            app:layout_constraintTop_toBottomOf="@+id/tv_weight_label" />
 
 
-    <!-- Plus Button "Cor" -->
-    <Button
-        android:id="@+id/btn_plus2"
-        style="@style/ButtonPlus"
-        app:layout_constraintEnd_toStartOf="@+id/tv_cor_weight"
-        app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_plastic" />
+        <!-- Subtract Button "Plastic" -->
+        <Button
+            android:id="@+id/btn_subtract"
+            style="@style/ButtonSub"
+            android:onClick="@{(v)-> clickHandler.onClick(v)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_weight_label" />
 
 
-    <!-- Subtract Button "Cor" -->
-    <Button
-        android:id="@+id/btn_subtract2"
-        style="@style/ButtonSub"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_plastic" />
+        <!-- Plus Button "Cor" -->
+        <Button
+            android:id="@+id/btn_plus2"
+            style="@style/ButtonPlus"
+            android:onClick="@{(v)-> clickHandler.onClick(v)}"
+            app:layout_constraintEnd_toStartOf="@+id/tv_cor_weight"
+            app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_plastic" />
 
 
-    <!-- Weight Label -->
-    <TextView
-        android:id="@+id/tv_weight_label"
-        style="@style/Labels"
-        android:layout_marginTop="16dp"
-        android:text="@string/weights"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <!-- Subtract Button "Cor" -->
+        <Button
+            android:id="@+id/btn_subtract2"
+            style="@style/ButtonSub"
+            android:onClick="@{(v)-> clickHandler.onClick(v)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_plastic" />
 
 
-    <!-- Sub Label for plastic header -->
-    <TextView
-        android:id="@+id/tv_subLabel_plastic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/minimum"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_plastic_label" />
+        <!-- Weight Label -->
+        <TextView
+            android:id="@+id/tv_weight_label"
+            style="@style/Labels"
+            android:layout_marginTop="16dp"
+            android:text="@string/weights"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <!-- Total weight TextView -->
-    <TextView
-        android:id="@+id/tv_totalWeight"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center"
-        android:text="@string/_0"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_subtract"
-        app:layout_constraintTop_toTopOf="@+id/btn_plus" />
+        <!-- Sub Label for plastic header -->
+        <TextView
+            android:id="@+id/tv_subLabel_plastic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/minimum"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_plastic_label" />
 
 
-    <!-- Cor weight TextView -->
-    <TextView
-        android:id="@+id/tv_cor_weight"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center"
-        android:text="@string/_0"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_subtract2"
-        app:layout_constraintTop_toTopOf="@+id/btn_plus2" />
+        <!-- Total weight TextView -->
+        <TextView
+            android:id="@+id/tv_totalWeight"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="@string/_0"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/btn_subtract"
+            app:layout_constraintTop_toTopOf="@+id/btn_plus" />
 
 
-    <!-- Sub Label for cor header -->
-    <TextView
-        android:id="@+id/tv_subLabel_cor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/cor_range"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cor_label" />
+        <!-- Cor weight TextView -->
+        <TextView
+            android:id="@+id/tv_cor_weight"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="@string/_0"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/btn_subtract2"
+            app:layout_constraintTop_toTopOf="@+id/btn_plus2" />
 
 
-    <!-- Plastic price EditText -->
-    <EditText
-        android:id="@+id/et_plastic_price"
-        style="@style/EditText"
-        android:hint="@string/plastic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_price_label" />
+        <!-- Sub Label for cor header -->
+        <TextView
+            android:id="@+id/tv_subLabel_cor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/cor_range"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cor_label" />
 
 
-    <!-- Cor price EditText -->
+        <!-- Plastic price EditText -->
+        <EditText
+            android:id="@+id/et_plastic_price"
+            style="@style/EditText"
+            android:hint="@string/plastic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_price_label" />
 
 
-    <!-- Calculate Button -->
-    <EditText
-        android:id="@+id/et_cor_price"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/custom_edit"
-        android:drawableStart="@drawable/ic_attach_money_black_24dp"
-        android:hint="@string/cor"
-        android:inputType="numberDecimal"
-        android:padding="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/btn_calculate"
-        android:layout_width="185dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="4dp"
-        android:background="@drawable/calculate_button"
-        android:text="@string/calculate"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_clear"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_net_cost" />
+        <!-- Cor price EditText -->
 
 
-    <!-- Save Button -->
-    <Button
-        android:id="@+id/btn_save"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/calculate_button"
-        android:text="@string/save"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/et_cor_price"
-        app:layout_constraintTop_toTopOf="@+id/et_cor_price" />
+        <!-- Calculate Button -->
+        <EditText
+            android:id="@+id/et_cor_price"
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/custom_edit"
+            android:drawableStart="@drawable/ic_attach_money_black_24dp"
+            android:hint="@string/cor"
+            android:inputType="numberDecimal"
+            android:padding="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Button
+            android:id="@+id/btn_calculate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/calculate_button"
+            android:onClick="@{(v)-> clickHandler.onClick(v)}"
+            android:text="@string/calculate"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/btn_clear"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_net_cost" />
 
 
-    <!-- Net cost Label -->
-    <TextView
-        android:id="@+id/tv_netCost_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/net_cost"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_prices_label" />
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/calculate_button"
+            android:onClick="@{(v)-> clickHandler.onClick(v)}"
+            android:text="@string/save"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/et_cor_price"
+            app:layout_constraintTop_toTopOf="@+id/et_cor_price" />
 
 
-    <!-- Total cost Label -->
-    <TextView
-        android:id="@+id/tv_totalCost_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/total_cost"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tv_netCost_label"
-        app:layout_constraintTop_toBottomOf="@+id/tv_prices_label" />
+        <!-- Net cost Label -->
+        <TextView
+            android:id="@+id/tv_netCost_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/net_cost"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_prices_label" />
 
 
-    <!-- Net cost TextView -->
-    <TextView
-        android:id="@+id/tv_net_cost"
-        style="@style/FinalCostTextView"
-        android:layout_marginStart="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_netCost_label" />
+        <!-- Total cost Label -->
+        <TextView
+            android:id="@+id/tv_totalCost_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/total_cost"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/tv_netCost_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_prices_label" />
 
 
-    <!-- Total cost TextView -->
-    <TextView
-        android:id="@+id/tv_total_cost"
-        style="@style/FinalCostTextView"
-        app:layout_constraintStart_toStartOf="@+id/tv_totalCost_label"
-        app:layout_constraintTop_toBottomOf="@+id/tv_netCost_label" />
+        <!-- Net cost TextView -->
+        <TextView
+            android:id="@+id/tv_net_cost"
+            style="@style/FinalCostTextView"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_netCost_label" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="@string/plastic"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_plastic_price" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="@string/cor"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_cor_price" />
+        <!-- Total cost TextView -->
+        <TextView
+            android:id="@+id/tv_total_cost"
+            style="@style/FinalCostTextView"
+            app:layout_constraintStart_toStartOf="@+id/tv_totalCost_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_netCost_label" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/plastic"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_plastic_price" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/cor"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_cor_price" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

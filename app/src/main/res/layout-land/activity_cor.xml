@@ -1,290 +1,307 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CorActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+        <variable
+            name="clickHandler"
+            type="com.example.android.cor.OnClickHandler" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        tools:context=".CorActivity">
 
 
-        <Button
-            android:id="@+id/btn_clear"
-            android:layout_width="185dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/calculate_button"
-            android:text="Clear"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/btn_calculate"
-            app:layout_constraintTop_toTopOf="@+id/btn_calculate" />
-
-        <TextView
-            android:id="@+id/tv_price_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
-            android:alpha="0.8"
-            android:text="@string/price"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/btn_subtract"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_prices_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:alpha="0.8"
-            android:text="@string/cost"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_cor" />
-
-        <TextView
-            android:id="@+id/tv_cor_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/cor"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_plastic" />
-
-        <TextView
-            android:id="@+id/tv_plastic_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/plastic"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_weight_label" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
 
-        <Button
-            android:id="@+id/btn_plus"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="128dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/small_button"
-            android:text="@string/plus"
-            android:textColor="@color/blue"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/tv_subLabel_plastic"
-            app:layout_constraintTop_toBottomOf="@+id/tv_weight_label" />
+            <Button
+                android:id="@+id/btn_clear"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/calculate_button"
+                android:onClick="@{(v)-> clickHandler.onClick(v)}"
+                android:text="Clear"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/btn_calculate"
+                app:layout_constraintTop_toTopOf="@+id/btn_calculate" />
 
-        <Button
-            android:id="@+id/btn_subtract"
-            style="@style/ButtonSub"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/tv_totalWeight"
-            app:layout_constraintTop_toBottomOf="@+id/tv_weight_label" />
+            <TextView
+                android:id="@+id/tv_price_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="16dp"
+                android:alpha="0.8"
+                android:text="@string/price"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/btn_subtract"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btn_plus2"
-            style="@style/ButtonPlus"
-            app:layout_constraintStart_toStartOf="@+id/btn_plus"
-            app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_plastic" />
+            <TextView
+                android:id="@+id/tv_prices_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:alpha="0.8"
+                android:text="@string/cost"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_cor" />
 
-        <Button
-            android:id="@+id/btn_subtract2"
-            style="@style/ButtonSub"
-            app:layout_constraintStart_toStartOf="@+id/btn_subtract"
-            app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_plastic" />
+            <TextView
+                android:id="@+id/tv_cor_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/cor"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_plastic" />
+
+            <TextView
+                android:id="@+id/tv_plastic_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/plastic"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_weight_label" />
 
 
-        <TextView
-            android:id="@+id/tv_weight_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:alpha="0.8"
-            android:text="@string/weights"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/btn_plus"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="128dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/small_button"
+                android:onClick="@{(v)-> clickHandler.onClick(v)}"
+                android:text="@string/plus"
+                android:textColor="@color/blue"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/tv_subLabel_plastic"
+                app:layout_constraintTop_toBottomOf="@+id/tv_weight_label" />
 
-        <TextView
-            android:id="@+id/tv_subLabel_plastic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/minimum"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_plastic_label" />
+            <Button
+                android:id="@+id/btn_subtract"
+                style="@style/ButtonSub"
+                android:layout_marginStart="8dp"
+                android:onClick="@{(v)-> clickHandler.onClick(v)}"
+                app:layout_constraintStart_toEndOf="@+id/tv_totalWeight"
+                app:layout_constraintTop_toBottomOf="@+id/tv_weight_label" />
 
-        <TextView
-            android:id="@+id/tv_totalWeight"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:gravity="center"
-            android:text="0"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/btn_plus"
-            app:layout_constraintTop_toTopOf="@+id/btn_plus" />
+            <Button
+                android:id="@+id/btn_plus2"
+                style="@style/ButtonPlus"
+                android:onClick="@{(v)-> clickHandler.onClick(v)}"
+                app:layout_constraintStart_toStartOf="@+id/btn_plus"
+                app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_plastic" />
 
-        <TextView
-            android:id="@+id/tv_cor_weight"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:gravity="center"
-            android:text="0"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/btn_plus2"
-            app:layout_constraintTop_toTopOf="@+id/btn_plus2" />
+            <Button
+                android:id="@+id/btn_subtract2"
+                style="@style/ButtonSub"
+                android:onClick="@{(v)-> clickHandler.onClick(v)}"
+                app:layout_constraintStart_toStartOf="@+id/btn_subtract"
+                app:layout_constraintTop_toBottomOf="@+id/tv_subLabel_plastic" />
 
-        <TextView
-            android:id="@+id/tv_subLabel_cor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/cor_range"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_cor_label" />
 
-        <EditText
-            android:id="@+id/et_plastic_price"
-            android:layout_width="100dp"
-            android:layout_height="45dp"
-            android:background="@drawable/custom_edit"
-            android:drawableStart="@drawable/ic_attach_money_black_24dp"
-            android:hint="Plastic"
-            android:inputType="numberDecimal"
-            android:padding="8dp"
-            app:layout_constraintStart_toStartOf="@+id/tv_price_label"
-            app:layout_constraintTop_toTopOf="@+id/btn_subtract" />
+            <TextView
+                android:id="@+id/tv_weight_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:alpha="0.8"
+                android:text="@string/weights"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/et_cor_price"
-            android:layout_width="100dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/custom_edit"
-            android:drawableStart="@drawable/ic_attach_money_black_24dp"
-            android:hint="Cor"
-            android:inputType="numberDecimal"
-            android:padding="8dp"
-            app:layout_constraintStart_toStartOf="@+id/et_plastic_price"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            <TextView
+                android:id="@+id/tv_subLabel_plastic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/minimum"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_plastic_label" />
 
-        <Button
-            android:id="@+id/btn_calculate"
-            android:layout_width="185dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/calculate_button"
-            android:text="@string/calculate"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/btn_plus2"
-            app:layout_constraintTop_toTopOf="@+id/tv_totalCost_label" />
+            <TextView
+                android:id="@+id/tv_totalWeight"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/btn_plus"
+                app:layout_constraintTop_toTopOf="@+id/btn_plus" />
 
-        <Button
-            android:id="@+id/btn_save"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/calculate_button"
-            android:text="@string/save"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/et_cor_price"
-            app:layout_constraintTop_toTopOf="@+id/et_cor_price" />
+            <TextView
+                android:id="@+id/tv_cor_weight"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/btn_plus2"
+                app:layout_constraintTop_toTopOf="@+id/btn_plus2" />
 
-        <TextView
-            android:id="@+id/tv_netCost_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/net_cost"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_prices_label" />
+            <TextView
+                android:id="@+id/tv_subLabel_cor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/cor_range"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cor_label" />
 
-        <TextView
-            android:id="@+id/tv_totalCost_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/total_cost"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/tv_netCost_label"
-            app:layout_constraintTop_toBottomOf="@+id/tv_prices_label" />
+            <EditText
+                android:id="@+id/et_plastic_price"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:background="@drawable/custom_edit"
+                android:drawableStart="@drawable/ic_attach_money_black_24dp"
+                android:hint="Plastic"
+                android:inputType="numberDecimal"
+                android:padding="8dp"
+                app:layout_constraintStart_toStartOf="@+id/tv_price_label"
+                app:layout_constraintTop_toTopOf="@+id/btn_subtract" />
 
-        <TextView
-            android:id="@+id/tv_net_cost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/zero"
-            android:textColor="@color/red"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_netCost_label" />
+            <EditText
+                android:id="@+id/et_cor_price"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/custom_edit"
+                android:drawableStart="@drawable/ic_attach_money_black_24dp"
+                android:hint="Cor"
+                android:inputType="numberDecimal"
+                android:padding="8dp"
+                app:layout_constraintStart_toStartOf="@+id/et_plastic_price"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <TextView
-            android:id="@+id/tv_total_cost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/zero"
-            android:textColor="@color/red"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/tv_totalCost_label"
-            app:layout_constraintTop_toBottomOf="@+id/tv_netCost_label" />
+            <Button
+                android:id="@+id/btn_calculate"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/calculate_button"
+                android:onClick="@{(v)-> clickHandler.onClick(v)}"
+                android:text="@string/calculate"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/btn_plus2"
+                app:layout_constraintTop_toTopOf="@+id/tv_totalCost_label" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/plastic"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@+id/et_plastic_price"
-            app:layout_constraintTop_toBottomOf="@+id/et_plastic_price" />
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/calculate_button"
+                android:onClick="@{(v)-> clickHandler.onClick(v)}"
+                android:text="@string/save"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/et_cor_price"
+                app:layout_constraintTop_toTopOf="@+id/et_cor_price" />
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/cor"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@+id/et_cor_price"
-            app:layout_constraintTop_toBottomOf="@+id/et_cor_price" />
+            <TextView
+                android:id="@+id/tv_netCost_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/net_cost"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_prices_label" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_totalCost_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/total_cost"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/tv_netCost_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_prices_label" />
 
-</ScrollView>
+            <TextView
+                android:id="@+id/tv_net_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/zero"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_netCost_label" />
+
+            <TextView
+                android:id="@+id/tv_total_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/zero"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/tv_totalCost_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_netCost_label" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/plastic"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/et_plastic_price"
+                app:layout_constraintTop_toBottomOf="@+id/et_plastic_price" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/cor"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/et_cor_price"
+                app:layout_constraintTop_toBottomOf="@+id/et_cor_price" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>
